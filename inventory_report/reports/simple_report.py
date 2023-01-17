@@ -23,8 +23,6 @@ class SimpleReport:
         nome_da_empresa_com_mais_produtos = Counter(
             list_nomes_empresas).most_common()[0][0]
 
-        print(nome_da_empresa_com_mais_produtos)
-
         return (
             f'Data de fabricação mais antiga: {min(data_list_fabricacao)}\n'
             f'Data de validade mais próxima: {min(data_list_validade)}\n'
