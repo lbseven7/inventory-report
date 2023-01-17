@@ -6,7 +6,6 @@ from inventory_report.inventory.product import Product
 # corretamente preenchidos.
 
 def test_cria_produto():
-    pass
     product = Product(
         id=1,
         nome_do_produto="Café",
@@ -17,7 +16,6 @@ def test_cria_produto():
         instrucoes_de_armazenamento="em local seco",
         )
 
-    # assert len(Product.__dict__) == 6
     assert product.id == 1
     assert product.nome_do_produto == "Café"
     assert product.nome_da_empresa == "Nescafé"
