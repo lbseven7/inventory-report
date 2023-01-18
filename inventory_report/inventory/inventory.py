@@ -29,3 +29,5 @@ class Inventory():
         elif path.endswith('.xml'):
             with open(path, 'r') as arquivo_xml:
                 return xmltodict.parse(arquivo_xml.read())['dataset']['record']
+
+# Ajuda de Arlisson
