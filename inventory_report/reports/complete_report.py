@@ -1,6 +1,8 @@
 from inventory_report.reports.simple_report import SimpleReport
 from collections import Counter
 
+# Gerar a versão completa do relatório
+
 
 class CompleteReport(SimpleReport):
     @classmethod
