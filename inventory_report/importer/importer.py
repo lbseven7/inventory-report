@@ -1,2 +1,8 @@
-# 7 - Organizar o código de importação com o padrão Strategy
-# Path: inventory_report/importer/importer.py
+from abc import ABC, abstractmethod
+
+
+class Importer(ABC):
+    @staticmethod
+    @abstractmethod
+    def import_data(file_name: str):
+        pass

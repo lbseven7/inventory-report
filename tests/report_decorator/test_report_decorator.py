@@ -15,19 +15,49 @@ def test_decorar_relatorio():
             "data_de_validade": "2023-02-09",
         },
         {
+
             "nome_da_empresa": "Farinini",
             "nome_do_produto": "Sabão em pó",
             "data_de_fabricacao": "2022-04-04",
             "data_de_validade": "2023-02-09",
         },
     ]
-    result = report.generate(products_list)
-    assert (
-        "\033[32mData de fabricação mais antiga:\033[0m \033[36m2022-04-04\033[0m" in result
-    )
-    assert (
-        "\033[32mData de validade mais próxima:\033[0m \033[36m2023-02-09\033[0m" in result
-    )
-    assert (
-        "\033[32mEmpresa com mais produtos:\033[0m \033[31mFarinini\033[0m" in result
-    )
+
+    res = report.generate(products_list)
+    data_antiga = "Data de fabricação mais antiga:"
+    data_validade = "Data de validade mais próxima:"
+    empresa = "Empresa com mais produtos:"
+
+    assert f"\033[32m{data_antiga}\033[0m \033[36m2022-04-04\033[0m" in res
+    assert f"\033[32m{data_validade}\033[0m \033[36m2023-02-09\033[0m" in res
+    assert f"\033[32m{empresa}\033[0m \033[31mFarinini\033[0m" in res
+
+# não consigo quebras as linhas sem "quebrar" o código no github!
+
+# data_antiga = """\033[32m'Data de fabricação mais antiga:'
+#     \033[0m \033[36m2022-04-04\033[0m\n"""
+
+#     validade = """\033[32m'Data de validade mais próxima:'
+#     \033[0m \033[36m2023-02-09\033[0m\n"""
+
+#     empresa = """\033[32m'Empresa com mais produtos:'
+#     \033[0m \033[31mFarinini\033[0m\n"""
+
+#     result = report.generate(products_list)
+
+#     assert data_antiga in result
+#     assert validade in result
+#     assert empresa in result
+
+    # data_antiga = """\033[32m'Data de fabricação mais antiga:'
+    #     "\033[0m 033[36m'1940-10-23'\033[0m\n"""
+    # validade = """\033[32m'Data de validade mais próxima:'
+    #     "\033[0m \033[36m2023-02-09\033[0m"""
+    # empresa = """\033[32m'Empresa com mais produtos:'
+    #     "\033[0m \033[31mFarinini\033[0m"""
+
+    # return (
+    #     f"Data de fabricação mais antiga: {data_antiga}\n"
+    #     f"Data de validade mais próxima: {validade}\n"
+    #     f"Empresa com mais produtos: {empresa}"
+    # ) in result
