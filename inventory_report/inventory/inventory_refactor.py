@@ -1,14 +1,30 @@
-# 10.1 - Seclass Inventory():
-from inventory_iterator import InventoryIterator
+from inventory_report.reports.simple_report import SimpleReport
+from inventory_report.reports.complete_report import CompleteReport
+import csv
+import json
+import xmltodict
 
 
+# 10 - Criar uma classe InventoryIterator
 class InventoryRefactor():
-    def __init__(self, importer):
-        self.importer = importer
-        self.data = []
 
-    def import_data(self, file_name):
-        self.data += self.importer.import_data(file_name)
+    @staticmethod
+    def import_data(path, type):
+        if type == 'simples':
+            return SimpleReport.generate(InventoryRefactor.ler_arquivo(path))
+        elif type == 'completo':
+            return CompleteReport.generate(InventoryRefactor.ler_arquivo(path))
 
-    def __iter__(self):
-        return InventoryIterator(self.data)
+    @staticmethod
+    def ler_arquivo(path):
+        if path.endswith('.csv'):
+            with open(path, 'r') as arquivo_csv:
+                return list(csv.DictReader(arquivo_csv))
+
+        elif path.endswith('.json'):
+            with open(path, 'r') as arquivo_json:
+                return json.load(arquivo_json)
+
+        elif path.endswith('.xml'):
+            with open(path, 'r') as arquivo_xml:
+                return xmltodict.parse(arquivo_xml.read())['dataset']['record']

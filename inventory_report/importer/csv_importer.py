@@ -4,14 +4,8 @@ import csv
 
 class CsvImporter(Importer):
     @staticmethod
-    def import_data(file_name: str):
-        if not file_name.endswith('.csv'):
+    def ler_csv(path):
+        if path.endswith('.csv'):
+            with open(path, 'r') as arquivo_csv:
+                return list(csv.DictReader(arquivo_csv))
             raise ValueError('Arquivo inválido')
-        data = []
-        with open(file_name, newline='') as f:
-            reader = csv.DictReader(f)
-            for row in reader:
-                data.append(row)
-        return data
-
-# Ajuda do https://chat.openai.com/chat
