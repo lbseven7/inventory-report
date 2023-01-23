@@ -1,4 +1,6 @@
 # Criar uma classe InventoryIterator
+# from inventory_report.inventory.inventory import Inventory
+
 
 class InventoryIterator():
     def __init__(self, products):
@@ -14,5 +16,6 @@ class InventoryIterator():
 
     def __iter__(self):
         return self
+
 
 # Consulta em: https://www.geeksforgeeks.org/iterators-in-python/
