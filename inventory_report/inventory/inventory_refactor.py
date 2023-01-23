@@ -9,11 +9,11 @@ class InventoryRefactor():
         self.data = []
 
     def import_data(self, path, type):
-        self.data = self.importer.import_data(path)
+        self.data.extend(self.importer.import_data(path))
         return self.data
 
     def __iter__(self):
         return InventoryIterator(self.data)
 
     def __next__(self):
-        return next(self.importer)
+        return InventoryIterator(self.data)
