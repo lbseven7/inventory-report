@@ -1,5 +1,6 @@
 # 10 - Criar uma classe InventoryIterator
 from inventory_report.inventory.inventory_iterator import InventoryIterator
+from inventory_report.importer.csv_importer import CsvImporter
 
 
 class InventoryRefactor():
@@ -17,3 +18,14 @@ class InventoryRefactor():
 
     def __next__(self):
         return self.data
+
+
+if __name__ == '__main__':
+    inventory = InventoryRefactor(CsvImporter)
+    file_csv = inventory.import_data(
+        'inventory_report/data/inventory.csv', 'simples')
+    iterator = iter(inventory)
+    first = next(iterator)
+    second = next(iterator)
+    print(first)
+    print(second)

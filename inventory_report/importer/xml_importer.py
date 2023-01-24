@@ -8,4 +8,5 @@ class XmlImporter(Importer):
         if path.endswith('.xml'):
             with open(path, 'r') as arquivo_xml:
                 return xmltodict.parse(arquivo_xml.read())['dataset']['record']
-        raise ValueError('Arquivo inválido')
+        else:
+            raise ValueError('Arquivo inválido')
