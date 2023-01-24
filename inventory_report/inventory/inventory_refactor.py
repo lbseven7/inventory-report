@@ -16,4 +16,4 @@ class InventoryRefactor():
         return InventoryIterator(self.data)
 
     def __next__(self):
-        return InventoryIterator(self.data)
+        return self.data
